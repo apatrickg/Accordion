@@ -1,4 +1,4 @@
-let anchorElement = document.querySelectorAll('.reveal-elements'), i;
+let buttonElement = document.querySelectorAll('.reveal-elements'), i;
 
 function makeBold(event){
     let question = event.target
@@ -11,9 +11,9 @@ function makeBold(event){
     question.classList.toggle('flip');
 }
 
-for (let i = 0; i < anchorElement.length; i++){
-    anchorElement[i].addEventListener('click', () =>{
-       let e = anchorElement[i].nextElementSibling;
+for (let i = 0; i < buttonElement.length; i++){
+    buttonElement[i].addEventListener('click', () =>{
+       let e = buttonElement[i].nextElementSibling;
        if (e.style.display != 'block'){
            e.style.display = 'block';
        } else{
@@ -22,6 +22,6 @@ for (let i = 0; i < anchorElement.length; i++){
     })
 }
 
-anchorElement.forEach((e) => {
+buttonElement.forEach((e) => {
     e.addEventListener('click', makeBold)
 })
