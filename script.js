@@ -1,27 +1,28 @@
-let buttonElement = document.querySelectorAll('.reveal-elements'), i;
+let buttonElements = document.querySelectorAll('.reveal-elements'), i;
 
-function makeBold(event){
-    let question = event.target
-    
-    if (question.style.fontWeight!== 'bold'){
-        question.style.fontWeight = 'bold';
-    } else{
-        question.style.fontWeight = 'normal'
-    }
-    question.classList.toggle('flip');
-}
-
-for (let i = 0; i < buttonElement.length; i++){
-    buttonElement[i].addEventListener('click', () =>{
-       let e = buttonElement[i].nextElementSibling;
-       if (e.style.display != 'block'){
-           e.style.display = 'block';
-       } else{
-           e.style.display = 'none';
+buttonElements.forEach((question) => {
+    question.addEventListener('click', (event) => {
+       event.target.classList.toggle('bold');
+       event.target.classList.toggle('flip');
+       let divs = document.querySelectorAll('.reveal-elements');
+       for(let i = 0; i < divs.length; i++){
+           if(divs[i] !== event.target){
+               divs[i].classList.remove('bold');
+               divs[i].classList.remove('flip');
+           } else{
+               continue;
+           }
        }
+        if (!event.target.classList.contains('reveal-elements')) return;
+        event.target.nextElementSibling.classList.toggle('show');
+        let siblings = document.querySelectorAll('.element');
+        for (let i = 0; i < siblings.length; i++){
+            if(siblings[i] !== event.target.nextElementSibling){
+                siblings[i].classList.remove('show')
+            } else{
+                continue;
+            }
+        }
     })
-}
-
-buttonElement.forEach((e) => {
-    e.addEventListener('click', makeBold)
 })
+
