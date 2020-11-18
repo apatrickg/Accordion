@@ -67,7 +67,7 @@ hr{
 .box{
     background-image:url('/images/illustration-box-desktop.svg');
     background-repeat: no-repeat;
-    transform: translate(-95px,-260px);
+    transform: translate(-95px,-275px);
     height: 30%;
 }
 
